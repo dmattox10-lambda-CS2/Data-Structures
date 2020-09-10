@@ -9,6 +9,7 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+from queue import Queue
 
 
 class BSTNode:
@@ -51,6 +52,8 @@ class BSTNode:
 
     # Return the maximum value found in the tree
     def get_max(self):
+        if not self:
+            return None
         max = self.value
         current = self
         while current.right is not None:
@@ -76,11 +79,33 @@ class BSTNode:
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
+    # Queue
+
     def bft_print(self):
-        pass
+        # grab root
+        q = Queue()
+        q.enqueue(self)
+        while len(q) > 0:
+            # if items in queue, dequeue current node
+            current = q.dequeue()
+        # mark current node as visited
+            # ???
+        # print the value
+            print(current.value)
+        # check left
+            if current.left is not None:
+                # enqueue the left
+                q.enqueue(current.left)
+        # check right
+            if current.right is not None:
+                # enqueue the right
+                q.enqueue(current.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
+    # Stack
+    from stack import Stack
+
     def dft_print(self):
         pass
 
@@ -99,17 +124,17 @@ class BSTNode:
 """
 This code is necessary for testing the `print` methods
 """
-# bst = BSTNode(1)
+bst = BSTNode(1)
 
-# bst.insert(8)
-# bst.insert(5)
-# bst.insert(7)
-# bst.insert(6)
-# bst.insert(3)
-# bst.insert(4)
-# bst.insert(2)
+bst.insert(8)
+bst.insert(5)
+bst.insert(7)
+bst.insert(6)
+bst.insert(3)
+bst.insert(4)
+bst.insert(2)
 
-# bst.bft_print()
+bst.bft_print()
 # bst.dft_print()
 
 # print("elegant methods")
