@@ -10,6 +10,7 @@ This part of the project comprises two days:
    on the BSTNode class.
 """
 from queue import Queue
+from stack import Stack
 
 
 class BSTNode:
@@ -107,12 +108,21 @@ class BSTNode:
     from stack import Stack
 
     def dft_print(self):
-        pass
+        s = Stack()
+        s.push(self)
+        while len(s) > 0:
+            current = s.pop()
+            print(current.value)
+            if current.left is not None:
+                s.push(current.left)
+            if current.right is not None:
+                s.push(current.right)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
+
     def pre_order_dft(self):
         pass
 
